@@ -5,3 +5,5 @@ voice/
 *.mp3
 *.wav
 .DS_Store
+src/howto*
+public/howto/
