@@ -30,6 +30,7 @@ curl -fsSL https://claude.ai/install.sh | bash        # Claude Code (윈도우: 
 git clone https://github.com/z-one-1/aisol-lecture-kit.git
 cd aisol-lecture-kit
 npm install
+npx remotion browser ensure   # 영상 렌더용 브라우저 1회 다운로드(1~2분, 첫 렌더 때 자동으로도 받지만 미리 받아 두면 안정적)
 cp .env.example .env     # 윈도우: copy .env.example .env
 ```
 `.env` 를 열어 `ELEVENLABS_API_KEY=` 와 `ELEVENLABS_VOICE_ID=` 뒤에 1단계에서 복사한 값을 붙여 넣고 저장합니다.
@@ -63,7 +64,7 @@ npm run studio                                    # 브라우저 미리보기
 
 ## 문제 해결
 - `ELEVENLABS_API_KEY가 없어요` → `.env` 확인. `401` → 키 오타. `크레딧 부족` → 일레븐랩스 플랜 확인.
-- 렌더가 느리면 `npm run render problems/x.json --shorts` 로 하나만.
+- 렌더가 느리면 `npm run render problems/x.json -- --shorts` 로 쇼츠만(가로만은 `-- --wide`).
 - 글이 넘치면 `sub`·`say` 를 줄이거나 단계를 나눕니다.
 
 MIT License · 만든 곳: 에이솔(학원 AI) · 문의: 유튜브 @aisol_edu

@@ -30,13 +30,13 @@ export const ProblemCard: React.FC<{ v: View }> = ({ v }) => {
         </div>
       ) : null}
       {p.choices ? (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: compact ? 8 : 10, fontSize: compact ? fs - 6 : fs - 4, fontFamily: FONT.body, fontWeight: 600 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: compact ? 8 : 10, fontSize: compact ? fs - 7 : fs - 4, fontFamily: FONT.body, fontWeight: 600 }}>
           {p.choices.map((c, i) => {
             const isAns = i === ansIdx && revealF !== null && frame >= revealF;
             const pop = isAns ? spring({ frame: frame - (revealF as number), fps, config: SPRING.accent, durationInFrames: 20 }) : 0;
             const short = c.length <= 4;
             return (
-              <div key={i} style={{ flex: short ? "1 1 0" : "1 1 100%", display: "flex", gap: 10, alignItems: "flex-start", background: isAns ? C.green : C.paper, color: isAns ? "#fff" : C.ink, borderRadius: 16, padding: short ? "10px 12px" : compact ? "6px 14px" : "8px 16px", boxShadow: "0 6px 18px rgba(12,122,98,.10)", transform: `scale(${1 + 0.06 * Math.sin(Math.min(1, pop) * Math.PI)})`, justifyContent: short ? "center" : "flex-start", lineHeight: 1.45 }}>
+              <div key={i} style={{ flex: short ? "1 1 0" : "1 1 100%", display: "flex", gap: 10, alignItems: "flex-start", background: isAns ? C.green : C.paper, color: isAns ? "#fff" : C.ink, borderRadius: 16, padding: short ? "10px 12px" : compact ? "6px 14px" : "8px 16px", boxShadow: "0 6px 18px rgba(12,122,98,.10)", transform: `scale(${1 + 0.06 * Math.sin(Math.min(1, pop) * Math.PI)})`, justifyContent: short ? "center" : "flex-start", lineHeight: compact ? 1.35 : 1.45 }}>
                 <span style={{ fontWeight: 900 }}>{circ(i)}</span><span><Rich text={c} hl={hl} hlColor={accent} /></span>
               </div>
             );
