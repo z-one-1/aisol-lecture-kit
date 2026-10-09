@@ -1,0 +1,118 @@
+{
+ "id": "2709-h1-eng-38",
+ "subject": "english",
+ "grade": "고1",
+ "exam": "2026년 9월 모의고사",
+ "num": "38번",
+ "points": "2점",
+ "type": "문장 삽입",
+ "badge": "오답률 1위",
+ "problem": {
+  "given": "As these communities grew in size, though, the inadequacies of this system would become evident.",
+  "passage": "To harness the full potential of units of measurement, we need some degree of consistency. {m1} Subjective measures contain useful knowledge, but this can be difficult to share, based as it is on an individual’s experience. {m2} The historian of science Theodore M. Porter describes measurement as a ‘technology of distance’: a tool that uses shared rules to bridge differences of culture and geography, allowing for the exchange of information. {m3} Following this logic, if measurement is another sort of language, then just as with words, individual units need reliable definitions in order to communicate. {m4} In the earliest societies, these definitions might need to be shared no more widely than a single settlement, meaning that the definition can be no more complex than knowing that a unit was equal to a certain body part. {m5} Imagine a disagreement over trade or tribute: it is a moment of conflict that demands greater consistency in measurement."
+ },
+ "stepsLabel": [
+  "단서 찾기",
+  "지문 대조",
+  "정답 확정"
+ ],
+ "notes": [
+  "though = 반전 신호",
+  "this system = 앞에 '시스템'",
+  "커졌다 = 앞엔 작은 공동체",
+  "④ 뒤 = 작은 마을 시스템",
+  "⑤ 뒤 = 갈등 예시"
+ ],
+ "steps": [
+  {
+   "stage": 0,
+   "cat": "think",
+   "say": "야, 이거 오답률 일 위 문제야. 근데 솔직히, 다 해석하면 시간 다 날아가. 단서 두 개만 잡자.",
+   "sub": "오답률 1위! 다 해석하면 시간 날아가. 단서 2개만 잡자"
+  },
+  {
+   "stage": 0,
+   "cat": "wow",
+   "say": "주어진 문장에 though 보이지? 이건 앞이랑 반대로 꺾인다는 신호야.",
+   "sub": "though = 앞이랑 반대로 꺾이는 신호",
+   "hl": [
+    "though"
+   ],
+   "note": 0
+  },
+  {
+   "stage": 0,
+   "cat": "think",
+   "say": "그리고 this system. 이 시스템? 그럼 앞에 무슨 시스템이 먼저 나와 있어야겠지?",
+   "sub": "this system? 앞에 '시스템'이 먼저 나와야지",
+   "hl": [
+    "this system"
+   ],
+   "note": 1
+  },
+  {
+   "stage": 0,
+   "cat": "smile",
+   "say": "그리고 these communities grew. 공동체가 커졌대. 그럼 앞에는 뭐가 와야 해? 작은 공동체 얘기.",
+   "sub": "공동체가 커졌다 → 앞엔 작은 공동체 얘기!",
+   "hl": [
+    "these communities grew in size"
+   ],
+   "note": 2
+  },
+  {
+   "stage": 1,
+   "cat": "smile",
+   "say": "자, 지문으로 가. 사 번 뒤, In the earliest societies. 제일 초기 사회. 딱 작은 공동체지?",
+   "sub": "④ 뒤 In the earliest societies = 제일 초기 사회",
+   "hl": [
+    "In the earliest societies"
+   ]
+  },
+  {
+   "stage": 1,
+   "cat": "wink",
+   "say": "한 마을 안에서만 통하면 되고, 신체 부위 하나면 끝. 이게 바로 this system이야.",
+   "sub": "한 마을 + 신체 부위 하나 = 바로 this system",
+   "hl": [
+    "a single settlement",
+    "a certain body part"
+   ],
+   "note": 3
+  },
+  {
+   "stage": 1,
+   "cat": "wow",
+   "say": "근데 오 번 뒤를 봐. 거래, 조공, 갈등! 일관성이 더 필요해졌다는 거잖아.",
+   "sub": "⑤ 뒤 → 거래·조공 갈등, 일관성이 더 필요",
+   "hl": [
+    "Imagine a disagreement over trade or tribute",
+    "greater consistency"
+   ],
+   "note": 4
+  },
+  {
+   "stage": 2,
+   "cat": "wink",
+   "say": "작은 마을, 커지면서 삐걱, 그리고 갈등. 흐름 딱 맞지? 정답, 오 번!",
+   "sub": "작은 마을 → 커지며 삐걱(though) → 갈등. 정답 5번!",
+   "reveal": true
+  },
+  {
+   "stage": 2,
+   "cat": "smile",
+   "say": "문장 삽입은 연결어랑 지시어. 이 두 개만 잡으면 끝이야. 저장해 두고 시험장 들어가!",
+   "sub": "연결어 + 지시어만 잡으면 끝! 저장해 두고 시험장 GO"
+  }
+ ],
+ "answer": "⑤",
+ "formula": {
+  "title": "문장 삽입 공식",
+  "lines": [
+   "① 연결어 → 흐름이 꺾이는 곳",
+   "② 지시어 → 가리키는 말이 앞에",
+   "③ 앞뒤 내용이 이어지면 확정"
+  ]
+ },
+ "brand": "에이솔"
+}
