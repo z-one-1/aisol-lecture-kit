@@ -10,7 +10,12 @@
     "tts": "node scripts/tts.mjs",
     "render": "node scripts/render.mjs",
     "make": "node scripts/make.mjs",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs",
+    "ingest": "node scripts/ingest.mjs",
+    "meta": "node scripts/meta.mjs",
+    "batch": "node scripts/batch.mjs",
+    "upload": "node scripts/upload.mjs",
+    "security-check": "node scripts/security-check.mjs"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

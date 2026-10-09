@@ -1,73 +1,71 @@
-# 내 목소리로 문제 풀이 영상 만들기 (aisol-lecture-kit)
+# 세팅 한 번, 내 목소리 강의 영상이 매일 올라간다 (aisol-lecture-kit)
 
-문제 하나 붙여 넣으면 **내 목소리**로 풀이해 주는 강의 영상(쇼츠 9:16 + 유튜브 16:9)이 나옵니다.
-촬영 없음, 편집 없음. 필요한 건 세 가지: **일레븐랩스(목소리) + Claude Code(대본·실행) + 이 키트(Remotion 영상)**.
+문제를 넣으면 **내 목소리**로 풀이하는 영상이 만들어지고, 유튜브에 **자동으로 올라갑니다.**
+촬영 없음, 편집 없음, 명령어 없음. 앱 3개만 깔고 말로 시키면 됩니다.
 
-> 영어·국어·수학 예시 3개가 `problems/` 에 들어 있고, 완성 영상은 에이솔 유튜브 @aisol_edu 에서 볼 수 있어요.
+- 일레븐랩스 = 내 목소리를 복제
+- Claude 앱(Claude Code) = 대본을 쓰고, 영상을 만들고, 올리는 것까지 대신 실행
+- 어사이드 = 유튜브(·인스타·스레드)에 로그인된 브라우저. 업로드 버튼을 대신 눌러 줌
 
-## 0. 비용(2026-10 기준, 공식 가격 페이지)
-| 항목 | 플랜 | 월 비용 | 메모 |
+> 완성본은 에이솔 유튜브 @aisol_edu 에서 볼 수 있어요. 만드는 법 영상(2분)도 있습니다.
+
+## 0. 비용 (2026-10 공식 가격)
+| 항목 | 플랜 | 월 | 메모 |
 |---|---|---|---|
-| 일레븐랩스 | Starter | $6 (연간 $5) | 30,000크레딧 ≈ 30분. **목소리 복제는 Starter부터**(Free 불가). 상업 이용 OK |
-| Claude | Pro | $20 (연간 $17) | Claude Code 포함(Free는 불가) |
-| Remotion | Free | $0 | 개인·3인 이하 회사 무료 |
-| 영상 1편(60~90초) | | 약 400크레딧 ≈ $0.08 | Starter로 월 70편 안팎 |
+| 일레븐랩스 | Starter | $6 | 목소리 복제는 Starter부터(무료 불가). 30분 분량 ≈ 영상 70편 |
+| Claude | Pro | $20 | Claude Code 포함. **$100~200 Max 요금제는 필요 없음** |
+| 어사이드 | Free | $0 | 브라우저 앱(맥·윈도우) |
+| Remotion(영상 엔진) | Free | $0 | 개인·3인 이하 회사 무료 |
 
-합계 **월 약 $26**으로 시작합니다. Claude는 $100~$200짜리 Max 요금제가 아니어도 됩니다. Pro($20)로 이 키트는 충분히 돌아갑니다.
-더 아끼려면 구독 없이 **Claude API 종량제**(콘솔 계정에서 API 키 발급 → Claude Code 실행 시 `ANTHROPIC_API_KEY` 사용)로도 됩니다. 대본 1편에 몇십 원 수준입니다. 무료(Free) 플랜은 Claude Code를 쓸 수 없습니다.
+합계 **월 약 $26**. 더 아끼려면 Claude 구독 대신 API 종량제(콘솔에서 키 발급)로도 됩니다. 대본 1편에 몇십 원. 단, 무료(Free) 플랜은 Claude Code를 쓸 수 없습니다.
 
-> 🎙 **목소리는 반드시 본인 것**을 직접 녹음해 복제하세요. 조용한 방에서 1~2분, 평소 수업하듯 또박또박. 마이크는 이어폰 마이크면 충분하고, 녹음 중간에 장비를 바꾸지 마세요. 다른 사람 목소리는 동의 없이 복제하면 안 됩니다.
+## 1. 세팅 (처음 한 번, 약 1시간) — 중학생도 되는 8줄
+| | 할 일 | 어디서 |
+|---|---|---|
+| 1 | 일레븐랩스 가입 → Starter 결제 → **Voices → Create Voice → Instant Voice Clone → 녹음** 버튼 누르고 1~2분 또박또박 읽기 → 저장 | elevenlabs.io |
+| 2 | 만들어진 목소리의 **ID 복사**, **Developers → API Keys → Create** 눌러 **키 복사** (메모장에 잠깐 붙여 둠. 남에게 보여 주지 않기) | elevenlabs.io |
+| 3 | **Claude 앱 설치**(Pro) → 앱 안의 **Claude Code** 탭 열기 | claude.ai/download |
+| 4 | 이 페이지의 초록 **Code → Download ZIP** → 압축 풀기 → Claude Code에서 그 폴더 열기 | 깃허브 |
+| 5 | 채팅창에 쓰기: **"설치해 줘. 일레븐랩스 키는 ○○○, 목소리 ID는 ○○○"** → 설치·설정은 Claude가 함(2~5분) | Claude Code |
+| 6 | **어사이드 설치** → 유튜브(스튜디오)에 로그인 1회 | aside.com |
+| 7 | 채팅창에 **"내 채널 기본값 잡아 줘"** → 학원 이름·과목·재생목록·올리는 시각을 묻고 설정 파일을 만들어 줌 | Claude Code |
+| 8 | 채팅창에 **"이 문제 영상 만들어서 올려"** + 문제 붙여넣기 → 10분쯤 뒤 유튜브 링크 | Claude Code |
 
-## 1. 목소리 복제 (일레븐랩스, 5분)
-1. elevenlabs.io 가입 → Starter 구독.
-2. **Voices → Add a new voice → Instant Voice Clone**. 조용한 곳에서 1~2분 또박또박 읽어 녹음(또는 mp3 업로드). 이름은 `my-voice`.
-3. 만든 목소리의 **Voice ID**를 복사해 둡니다(목소리 카드 → ID).
-4. 프로필 → **API Keys → Create** 로 키를 하나 만들어 복사해 둡니다. (키는 비밀번호처럼 다룹니다. 화면 공유·영상에 노출 금지)
+> 목소리는 **반드시 본인 것**을 직접 녹음해 복제하세요. 조용한 방, 평소 수업하듯, 이어폰 마이크면 충분. 다른 사람 목소리는 동의 없이 복제하면 안 됩니다.
 
-> 본인 목소리만 복제하세요. 다른 사람 목소리는 동의 없이 복제하면 안 됩니다.
+## 2. 매일 쓰는 법 (말 한마디)
+| 말 | 일어나는 일 |
+|---|---|
+| "이 문제 영상 만들어" + 문제 | 대본 → 내 목소리 → 쇼츠(9:16) + 가로(16:9) mp4 가 `out/` 에 |
+| "…만들어서 올려" | 위 + 유튜브 업로드(제목·설명·태그·재생목록 자동) → 링크 |
+| `inbox/` 폴더에 문제 파일(텍스트·사진·PDF)을 넣고 "inbox 처리해서 올려" | 전부 영상으로 만들고 하루 1편씩 예약 공개 |
+| "EBSi에서 2026년 9월 고1 영어 받아 줘" | 어사이드가 문제지·정답지·오답률을 받아 오고 → 오답률 높은 순으로 전 문항 제작 |
+| "매일 저녁 7시에 자동으로 돌려 줘" | 예약 등록. 이후엔 inbox에 넣기만 하면 됨 |
 
-## 2. 설치 (터미널, 10분)
+## 3. 무엇이 나오나
+- 화면: 초록 헤더(학년·시험·번호) → 문제 카드(수식 지원) → 단서 노트·풀이 보드 → 고양이 선생님 자막 → 공식 카드·정답 도장. 쇼츠·가로 둘 다.
+- 수학: 메인 교재 전 문항 풀이 영상(사진으로 inbox에, 학원 내부용). 영어·국어: 모의고사 전 문항 풀이.
+- 예시 3편의 문제 파일이 `problems/` 에 있어요(영어 38번·국어 9번·수학 6번).
+
+## 4. 폴더
+`inbox/` 문제 넣는 곳 · `problems/` 문제·대본 JSON · `out/` 완성 영상·메타·업로드 기록(ledger.csv) · `scripts/` 제작·업로드 명령 · `cron/` 매일 자동 실행 템플릿 · `config.json` 내 채널 설정 · `.env` 비밀값(절대 공유 금지)
+
+## 5. 안 될 때 (Claude Code에게 그대로 보여 주면 고쳐 줍니다)
+- `ELEVENLABS_API_KEY가 없어요` → .env 확인 · `401` → 키 오타 · `크레딧 부족` → 일레븐랩스 플랜
+- 영상 렌더 중 브라우저 다운로드 실패 → 인터넷 확인 후 "다시 해 줘"
+- 업로드가 안 됨 → 어사이드에서 studio.youtube.com 로그인 확인 · `일일 업로드 한도` → 내일 예약
+- 글자가 넘침 → "자막 줄여서 다시 만들어 줘"
+
+## 6. 직접 명령어로 돌리고 싶은 분 (부록)
 ```bash
-# Node.js 22 이상이 없으면 https://nodejs.org 에서 LTS 설치
-curl -fsSL https://claude.ai/install.sh | bash        # Claude Code (윈도우: irm https://claude.ai/install.ps1 | iex)
-git clone https://github.com/z-one-1/aisol-lecture-kit.git
-cd aisol-lecture-kit
-npm install
-npx remotion browser ensure   # 영상 렌더용 브라우저 1회 다운로드(1~2분, 첫 렌더 때 자동으로도 받지만 미리 받아 두면 안정적)
-cp .env.example .env     # 윈도우: copy .env.example .env
-```
-`.env` 를 열어 `ELEVENLABS_API_KEY=` 와 `ELEVENLABS_VOICE_ID=` 뒤에 1단계에서 복사한 값을 붙여 넣고 저장합니다.
-
-## 3. 문제 주고 영상 만들기 (Claude Code)
-```bash
-claude
-```
-Claude Code가 열리면 이렇게 말합니다(문제는 복사해 붙여 넣기):
-```
-이 문제 풀이 영상 만들어 줘. 과목은 수학, 고1 2026년 9월 모의고사 6번, 정답은 ④.
-(문제 전문 붙여 넣기)
-```
-Claude Code가 `problems/…json` 을 쓰고 `npm run make` 까지 실행합니다. 끝나면 `out/` 에 mp4 두 개가 생깁니다.
-
-직접 돌리고 싶으면:
-```bash
-npm run make problems/2709-h1-math-06.json      # 점검 → 음성 → 렌더(쇼츠+가로)
-npm run studio                                    # 브라우저 미리보기
+npm install && npx remotion browser ensure
+cp .env.example .env                      # 키·목소리 ID 채우기
+cp config.example.json config.json        # 채널 설정
+npm run make problems/2709-h1-math-06.json   # 음성 → 렌더
+npm run meta problems/2709-h1-math-06.json   # 제목·설명·태그
+npm run upload                                # 유튜브 업로드(어사이드)
+npm run ingest && npm run batch               # inbox 전체 처리
+npm run security-check                        # 공개 전 비밀값 검사
 ```
 
-## 4. 유튜브 올리기
-`out/<id>-shorts.mp4` 는 쇼츠, `out/<id>-wide.mp4` 는 일반 영상으로 업로드하면 됩니다. AI 음성(본인 목소리 복제) 사용 사실은 영상 하단에 표시됩니다.
-
-## 이걸로 할 수 있는 것
-- 수학: 메인 교재 전 문항 풀이 영상을 학원 내부용으로(교재 문항은 공개 업로드 금지, 저작권).
-- 영어·국어: 모의고사 전 문항 풀이 영상. 문항 JSON만 바꾸면 양산.
-
-## 폴더
-`problems/` 문제·대본 JSON · `src/` 영상 디자인(Remotion) · `scripts/` 음성·렌더 명령 · `public/voice/` 생성된 음성(커밋 안 함) · `out/` 완성 영상
-
-## 문제 해결
-- `ELEVENLABS_API_KEY가 없어요` → `.env` 확인. `401` → 키 오타. `크레딧 부족` → 일레븐랩스 플랜 확인.
-- 렌더가 느리면 `npm run render problems/x.json -- --shorts` 로 쇼츠만(가로만은 `-- --wide`).
-- 글이 넘치면 `sub`·`say` 를 줄이거나 단계를 나눕니다.
-
-MIT License · 만든 곳: 에이솔(학원 AI) · 문의: 유튜브 @aisol_edu
+MIT License · 만든 곳: 에이솔(학원 AI) · 유튜브 @aisol_edu

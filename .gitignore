@@ -7,3 +7,7 @@ voice/
 .DS_Store
 src/howto*
 public/howto/
+config.json
+inbox/*
+!inbox/.gitkeep
+out/ledger.csv
