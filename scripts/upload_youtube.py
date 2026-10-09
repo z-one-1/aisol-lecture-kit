@@ -42,14 +42,22 @@ m = json.load(open(sys.argv[1])); DRY = "--dry" in sys.argv
 if not os.path.exists(m["file"]): raise SystemExit("영상 파일 없음: " + m["file"])
 run("goto", "https://studio.youtube.com/"); time.sleep(2)
 # 이전 업로드 창(공유 완료·처리 중 대화상자)이 남아 있으면 닫는다
-ev("(()=>{[...document.querySelectorAll('ytcp-button,button')].filter(e=>e.offsetParent&&/^(닫기|Close)$/.test(e.innerText.trim())).forEach(e=>e.click());return 1})()"); time.sleep(1)
+ev("(()=>{[...document.querySelectorAll('ytcp-button,button')].filter(e=>e.offsetParent&&/^(취소|Cancel|닫기|Close)$/.test(e.innerText.trim())).forEach(e=>e.click());return 1})()"); time.sleep(1.5)
+ev("(()=>{const x=[...document.querySelectorAll('ytcp-uploads-dialog ytcp-icon-button, ytcp-uploads-dialog #close-button, ytcp-uploads-dialog [aria-label=\"닫기\"]')].find(e=>e.offsetParent);x&&x.click();return 1})()"); time.sleep(1.5)
+ev("(()=>{[...document.querySelectorAll('ytcp-button,button')].filter(e=>e.offsetParent&&/^(닫기|Close|취소|Cancel)$/.test(e.innerText.trim())).forEach(e=>e.click());return 1})()"); time.sleep(1)
 if ev("!!document.querySelector('ytcp-uploads-dialog')"):
     repl(f"const tab=await attachBrowserTab('{T}'); for(const type of ['rawKeyDown','keyUp']) await tab._sendToTarget('Input.dispatchKeyEvent',{{type,key:'Escape',code:'Escape',windowsVirtualKeyCode:27}}); console.log('esc')"); time.sleep(2)
 ch = ev("(location.href.match(/channel\\/(UC[\\w-]+)/)||[])[1]||''")
 if not ch: raise SystemExit("채널을 못 찾았어요. 어사이드에서 유튜브 스튜디오에 로그인한 뒤 다시")
 run("goto", f"https://studio.youtube.com/channel/{ch}/videos/short")
 click_text("만들기"); time.sleep(1); click_text("동영상 업로드"); time.sleep(3)
-run("upload", "0", m["file"])
+fi = ev("[...document.querySelectorAll('input[type=file]')].findIndex(e=>e.closest('ytcp-uploads-dialog'))")
+if fi is None or fi < 0: fi = 0
+run("upload", str(fi), m["file"])
+time.sleep(3)
+if ev("/일일 업로드 한도|daily upload limit/i.test(document.body.innerText)"):
+    ev("(()=>{const x=[...document.querySelectorAll('ytcp-uploads-dialog ytcp-icon-button,ytcp-uploads-dialog #close-button')].find(e=>e.offsetParent);x&&x.click();return 1})()")
+    raise SystemExit("LIMIT 일일 업로드 한도 도달 — 스튜디오에서 '인증하기'(일회성 전화 인증)를 하거나 24시간 뒤 다시. 예약 업로드를 쓰면 하루 한도 안에서 자동 분배됩니다")
 if not wait("[...document.querySelectorAll('#textbox')].filter(e=>e.offsetParent).length>=2", 90):
     if ev("document.body.innerText.includes('일일 업로드 한도')"): raise SystemExit("LIMIT 일일 업로드 한도 도달 — 내일 다시")
     raise SystemExit("세부정보 화면 안 뜸")
@@ -105,6 +113,11 @@ time.sleep(1)
 if DRY: print("DRY 멈춤(게시 안 함, 초안 남음)"); print("URL", url); sys.exit(0)
 ev("(()=>{document.querySelector('#done-button').click();return 1})()")
 wait("!!document.querySelector('ytcp-video-share-dialog, ytcp-uploads-still-processing-dialog')", 30); time.sleep(2)
+# 파일 업로드가 끝날 때까지 탭을 유지한다(여기서 떠나면 '업로드 다시 시작' 상태로 남음)
+for _ in range(120):
+    pt = ev("(()=>{const e=document.querySelector('ytcp-video-upload-progress, .progress-label, ytcp-uploads-dialog .progress-label');return e?e.innerText.trim():''})()") or ""
+    if not pt or "처리" in pt or "완료" in pt or "검사" in pt or "100%" in pt: break
+    time.sleep(3)
 txt = ev("[...document.querySelectorAll('ytcp-video-share-dialog,ytcp-uploads-still-processing-dialog,tp-yt-paper-dialog')].filter(e=>e.offsetParent).map(e=>e.innerText).join(' ')") or ""
 mm = re.search(r"https://youtube\.com/shorts/[\w-]+", txt) or re.search(r"https://youtu\S+", url or "")
 ev("(()=>{const b=[...document.querySelectorAll('ytcp-button,button')].find(e=>e.offsetParent&&e.innerText.trim()=='닫기');b&&b.click();return 1})()")
