@@ -1,0 +1,27 @@
+{
+ "id": "2609-h1-eng-30",
+ "subject": "english",
+ "grade": "고1",
+ "exam": "2026년 9월 모의고사",
+ "num": "30번",
+ "points": "3점",
+ "type": "낱말 쓰임",
+ "badge": "오답률 2위",
+ "problem": {
+  "text": "다음 글의 밑줄 친 부분 중, 문맥상 낱말의 쓰임이 적절하지 않은 것은?",
+  "passage": "Keep your paragraphs short. Writing is {m1}visual — it catches the eye before it has a chance to catch the brain. Short paragraphs put air around what you write and make it look {m2}inviting, whereas a long chunk of type can discourage a reader from even starting to read. Newspaper paragraphs should be only two or three sentences long; newspaper type is set in a narrow width, and the inches quickly add up. You may think such frequent paragraphing will {m3}damage the development of your point. Obviously The New Yorker is obsessed by this fear — a reader can go for miles without relief. Don't worry; the gains far outweigh the hazards. But don't go too far. A succession of tiny paragraphs is as {m4}annoying as a paragraph that's too long. I'm thinking of all those tiny paragraphs — verbless wonders — written by modern journalists trying to make their articles quick 'n' easy. Actually they make the reader's job {m5}easier by chopping up a natural train of thought."
+ },
+ "stepsLabel": ["뼈대 잡기", "앞뒤 대조", "정답 확정"],
+ "notes": ["뼈대: 짧게 써라, 너무 짧게는 말고", "① visual = 눈을 먼저 잡는다", "② inviting = 읽고 싶게", "③ damage = 걱정, 그래도 이득", "④ annoying = 너무 짧아도 짜증", "⑤ easier? 흐름을 토막 내는데"],
+ "steps": [
+  {"stage": 0, "cat": "think", "say": "낱말 쓰임 문제는 단어 뜻이 아니라 흐름이야. 글이 어디로 가는지 먼저 잡자. 문단은 짧게 써라, 근데 너무 짧아도 안 된다. 이게 뼈대.", "sub": "뼈대: 짧게 써라, 근데 너무 짧게는 말고", "note": 0},
+  {"stage": 0, "cat": "smile", "say": "첫 문장. 글쓰기는 visual, 눈에 먼저 들어온다. 짧은 문단은 글에 숨을 주고 inviting, 읽고 싶게 만든다. 둘 다 흐름이랑 딱 맞아.", "sub": "① visual ② inviting = 흐름 OK", "hl": ["visual", "inviting"], "note": 1},
+  {"stage": 1, "cat": "smile", "say": "삼 번. 이렇게 자주 끊으면 논지 전개를 damage, 망칠 것 같다고 생각할 수 있다. 근데 걱정 마, 이득이 더 크다. 자연스럽지?", "sub": "③ damage = 걱정 → 괜찮아. OK", "hl": ["damage"], "note": 3},
+  {"stage": 1, "cat": "wow", "say": "사 번. 근데 너무 가지는 마라. 아주 짧은 문단이 줄줄이 이어지면 긴 문단만큼 annoying, 짜증 난다. 반전이지만 흐름 맞아.", "sub": "④ annoying = 너무 짧아도 짜증. OK", "hl": ["annoying"], "note": 4},
+  {"stage": 1, "cat": "wow", "say": "오 번. 동사 없는 토막 문단이 독자의 일을 easier, 쉽게 한다고? 자연스러운 생각의 흐름을 토막 내는데? 쉽게가 아니라 어렵게지.", "sub": "⑤ easier ✗ → harder! 흐름을 토막 내니까", "hl": ["easier"], "note": 5, "reveal": true},
+  {"stage": 2, "cat": "wink", "say": "정답 오 번. 낱말 문제는 한 단어만 보지 말고 앞뒤가 같은 방향인지 봐. 반대로 꺾이면 그게 답이야.", "sub": "낱말 쓰임 = 앞뒤 방향 확인"}
+ ],
+ "answer": "⑤",
+ "formula": {"title": "낱말 쓰임 공식", "lines": ["① 글의 뼈대 한 줄로 잡기", "② 밑줄 앞뒤가 같은 방향인지", "③ 방향이 뒤집힌 낱말 = 정답"]},
+ "brand": "에이솔"
+}

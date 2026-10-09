@@ -41,6 +41,10 @@ def wait(js, sec=60):
 m = json.load(open(sys.argv[1])); DRY = "--dry" in sys.argv
 if not os.path.exists(m["file"]): raise SystemExit("영상 파일 없음: " + m["file"])
 run("goto", "https://studio.youtube.com/"); time.sleep(2)
+# 이전 업로드 창(공유 완료·처리 중 대화상자)이 남아 있으면 닫는다
+ev("(()=>{[...document.querySelectorAll('ytcp-button,button')].filter(e=>e.offsetParent&&/^(닫기|Close)$/.test(e.innerText.trim())).forEach(e=>e.click());return 1})()"); time.sleep(1)
+if ev("!!document.querySelector('ytcp-uploads-dialog')"):
+    repl(f"const tab=await attachBrowserTab('{T}'); for(const type of ['rawKeyDown','keyUp']) await tab._sendToTarget('Input.dispatchKeyEvent',{{type,key:'Escape',code:'Escape',windowsVirtualKeyCode:27}}); console.log('esc')"); time.sleep(2)
 ch = ev("(location.href.match(/channel\\/(UC[\\w-]+)/)||[])[1]||''")
 if not ch: raise SystemExit("채널을 못 찾았어요. 어사이드에서 유튜브 스튜디오에 로그인한 뒤 다시")
 run("goto", f"https://studio.youtube.com/channel/{ch}/videos/short")

@@ -5,7 +5,7 @@ import { join } from "node:path";
 import { ROOT, readScript, ok, save } from "./lib.mjs";
 import { loadConfig, SUBJ, fill } from "./config.mjs";
 const s = readScript(process.argv[2]); const cfg = loadConfig();
-const di = process.argv.indexOf("--date"); const date = di > 0 ? process.argv[di + 1] : null;
+const di = process.argv.indexOf("--date"); const date = di >= 0 ? process.argv[di + 1] : null;
 const vars = { brand: cfg.brand, teacher: cfg.teacher, grade: s.grade, exam: s.exam, subject: SUBJ[s.subject], num: s.num, type: s.type, id: s.id };
 const hashtags = cfg.youtube.hashtags.map((h) => fill(h, vars)).join(" ");
 const dir = join(ROOT, "out", s.id); mkdirSync(dir, { recursive: true });

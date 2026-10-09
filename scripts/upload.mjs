@@ -5,7 +5,7 @@ import { spawnSync } from "node:child_process";
 import { ROOT, ok, die } from "./lib.mjs";
 import { loadConfig } from "./config.mjs";
 const cfg = loadConfig(); const args = process.argv.slice(2); const DRY = args.includes("--dry");
-const oi = args.indexOf("--only"); const only = oi > 0 ? args[oi + 1] : null;
+const oi = args.indexOf("--only"); const only = oi >= 0 ? args[oi + 1] : null;
 const L = join(ROOT, "out", "ledger.csv"); if (!existsSync(L)) writeFileSync(L, "time,id,channel,url\n");
 const done = new Set(readFileSync(L, "utf8").split("\n").slice(1).map((l) => l.split(",")[1]).filter(Boolean));
 const env = { ...process.env, ...(cfg.aside?.account ? { ASIDE_ACCOUNT: cfg.aside.account } : {}) };

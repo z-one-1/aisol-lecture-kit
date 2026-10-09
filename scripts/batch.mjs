@@ -3,8 +3,8 @@ import { readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { ROOT, ok } from "./lib.mjs";
-const args = process.argv.slice(2); const li = args.indexOf("--limit"); const limit = li > 0 ? +args[li + 1] : 999;
-const di = args.indexOf("--date"); const dateArgs = di > 0 ? ["--date", args[di + 1]] : [];
+const args = process.argv.slice(2); const li = args.indexOf("--limit"); const limit = li >= 0 ? +args[li + 1] : 999;
+const di = args.indexOf("--date"); const dateArgs = di >= 0 ? ["--date", args[di + 1]] : [];
 const todo = readdirSync(join(ROOT, "problems")).filter((f) => f.endsWith(".json")).filter((f) => !existsSync(join(ROOT, "out", f.replace(".json", "-shorts.mp4")))).slice(0, limit);
 if (!todo.length) { ok("만들 것 없음(problems 전부 완성)"); process.exit(0); }
 for (const f of todo) {
